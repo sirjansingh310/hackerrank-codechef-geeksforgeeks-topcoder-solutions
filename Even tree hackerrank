@@ -1,0 +1,69 @@
+import java.util.*;
+import java.io.*;
+class graph{
+    private int nodes;
+    private LinkedList<Integer> adj[];
+    private int count=0;
+    private  boolean visited[];
+    graph(int v){
+        nodes=v;
+        visited=new boolean[nodes];
+        adj=new LinkedList[nodes];
+        for(int i=0;i<nodes;i++)
+            adj[i]=new LinkedList<Integer>();
+        
+    }
+    void addEdge(int p,int c){
+        adj[p].add(c);
+    }
+    void start(int parent){
+        if(adj[parent].size()!=0){
+            int lcount=0;
+            LinkedList<Integer> q=new LinkedList<>();
+            q.add(parent);
+        //    visited[parent]=true;
+            while(q.size()!=0){
+                int s=q.poll();
+                Iterator<Integer> i=adj[s].iterator();
+                while(i.hasNext()){
+                    int next=i.next();
+                    if(!visited[next]){
+                        q.add(next);
+                        lcount++;
+                     //   visited[next]=true;
+                    }
+                }
+                
+            }
+            if((lcount+1)%2==0)
+                count++;
+          //  System.out.println(lcount);
+            for(int i=0;i<adj[parent].size();i++)
+                start(adj[parent].get(i));
+        }
+        
+    }
+    void print(){
+        System.out.println(nodes%2==0?count-1:count);
+    }
+   
+    
+}
+class sol{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int v=sc.nextInt();
+        int e=sc.nextInt();
+        int parent=0;
+        graph g=new graph(v);
+        for(int i=0;i<v-1;i++){
+            int a=sc.nextInt();
+            int b=sc.nextInt();
+       
+            g.addEdge(b-1,a-1);
+        }
+        g.start(0);
+        g.print();
+        
+    }
+}
