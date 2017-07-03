@@ -1,0 +1,63 @@
+import java.io.*;
+import java.util.*;
+/*
+*@ Graph Theory Problem- Floyd: City of Blinding Lights
+*@ Author : Sirjan Singh
+*@ Profile Link: https://www.hackerrank.com/sirjansingh310
+/*
+class graph{
+    private int n;
+    private int m[][];
+    graph(int n){
+        this.n=n;
+        m=new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                m[i][j]=1000000;
+            }
+        }
+    }
+    void addEdge(int s,int d,int cost){
+        m[s][d]=cost;
+    }
+    void allpairs(){
+        for(int k=0;k<n;k++){
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    m[i][j]=Math.min(m[i][j],(m[i][k]+m[k][j]));
+                }
+            }
+        }
+    }
+    void print(int s,int d){
+        if(s==d)
+            System.out.println(0);
+       else if(m[s][d]==1000000)
+           System.out.println(-1);
+        else
+            System.out.println(m[s][d]);
+    }
+}
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt(),m=sc.nextInt();
+        graph g=new graph(n);
+        for(int i=0;i<m;i++){
+            int s=sc.nextInt();
+            int d=sc.nextInt();
+            int r=sc.nextInt();
+            g.addEdge(s-1,d-1,r);
+        }
+        g.allpairs();
+        int q=sc.nextInt();
+        for(int i=0;i<q;i++){
+            int s=sc.nextInt();
+            int d=sc.nextInt();
+            g.print(s-1,d-1);
+        }
+    }
+}
