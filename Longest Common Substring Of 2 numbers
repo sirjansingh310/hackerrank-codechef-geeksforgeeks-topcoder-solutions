@@ -1,0 +1,64 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*
+Author :Sirjan Singh
+Problem :Longest Common Substring of 2 numbers
+in this problem we have to find to convert 2 numbers into binary , check the longest common substring of the 2 binary substrings and return
+the integer value of the binary string found. If multiple LCS exist , return the one with maximum integer value
+Link to the problem :http://practice.geeksforgeeks.org/problems/longest-common-substring-value-of-two-numbers/0
+*/
+class GFG {
+    public static long lcs(String s1,String s2){
+        char a[]=s1.toCharArray();
+        char b[]=s2.toCharArray();
+        int max=0;
+        int dynarr[][]=new int[a.length][b.length];
+        for(int i=0;i<a.length;i++){
+            for(int j=0;j<b.length;j++){
+                if(a[i]==b[j]&&(i==0||j==0))
+                dynarr[i][j]=1;
+                else if(a[i]==b[j])
+                dynarr[i][j]=dynarr[i-1][j-1]+1;
+                else
+                dynarr[i][j]=0;
+                if(dynarr[i][j]>max){
+                max=dynarr[i][j];
+                }
+            }
+        }
+        long ans=0;
+        for(int i=0;i<a.length;i++){
+            for(int j=0;j<b.length;j++){
+                if(dynarr[i][j]==max){
+                    String sub="";
+                    int index_i=i,index_j=j;
+                    while(true){
+                        if(index_i==-1||index_j==-1)
+                        break;
+                        if(dynarr[index_i][index_j]==0)
+                        break;
+                        sub+=a[index_i];
+                        index_i--;
+                        index_j--;
+                    }
+                    sub=new StringBuilder(sub).reverse().toString();
+                    long local=Long.parseLong(sub,2);
+                    if(local>ans)
+                    ans=local;
+                }
+            }
+        }
+       return ans;
+    }
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-- >0){
+		    long a=sc.nextLong(),b=sc.nextLong();
+		    String s1=Long.toBinaryString(a);
+		    String s2=Long.toBinaryString(b);
+		    System.out.println(lcs(s1,s2));
+		}
+	}
+}
