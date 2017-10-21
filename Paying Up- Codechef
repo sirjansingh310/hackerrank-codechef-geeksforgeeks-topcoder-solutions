@@ -1,0 +1,50 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*
+Problem Name :Paying Up 
+Author:Sirjan Singh
+Concept Used : Sum of Subset using Dynamic Programming
+*/
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+    static boolean subset(int n,int notes[],int sum){
+        boolean dp[][]=new boolean[n][sum+1];
+        for(int i=0;i<n;i++){
+            dp[i][0]=true;
+        }
+        for(int j=1;j<sum+1;j++){
+            if(notes[0]==j)
+            dp[0][j]=true;
+        }
+        for(int i=1;i<n;i++){
+            for(int j=1;j<sum+1;j++){
+                if(j<notes[i])
+                dp[i][j]=dp[i-1][j];
+                else 
+                dp[i][j]=dp[i-1][j]||dp[i-1][j-notes[i]];
+            }
+        }
+        
+        return dp[n-1][sum];
+        
+    }
+    
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    Scanner sc=new Scanner(System.in);
+	    int t=sc.nextInt();
+	    while(t-- >0){
+	        int n=sc.nextInt(),sum=sc.nextInt();
+	        int notes[]=new int[n];
+	        for(int i=0;i<n;i++){
+	            notes[i]=sc.nextInt();
+	        }
+	        System.out.println(subset(n,notes,sum)?"Yes":"No");
+	    }
+	}
+}
