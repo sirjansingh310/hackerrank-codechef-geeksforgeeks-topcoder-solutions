@@ -1,0 +1,70 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+/*
+Problem Link :https://www.hackerrank.com/contests/hourrank-24/challenges/wire-removal
+Author :Sirjan Singh
+*/
+class graph{
+    private LinkedList<Integer> adj[];
+    private boolean visited[];
+    private long dist[];
+    private int children[];
+    private int n;
+    graph(int n){
+        this.n=n;
+        children=new int[n];
+        dist=new long[n];
+        visited=new boolean[n];
+        adj=new LinkedList[n];
+        for(int i=0;i<n;i++)
+            adj[i]=new LinkedList<Integer>();
+    }
+    void addEdge(int a,int b){
+        adj[a].add(b);
+        adj[b].add(a);
+    }
+    int dfs(int s){
+           int c=1;
+           visited[s]=true;
+           Iterator<Integer> itr=adj[s].iterator();
+           while(itr.hasNext()){
+               int next=itr.next();
+               if(!visited[next]){
+               dist[next]=dist[s]+1;
+               c=c+dfs(next);
+               
+           }
+       }
+        children[s]=c;
+      return c;
+    }
+    void util(){
+        children[0]=dfs(0);
+     //   System.out.println(Arrays.toString(children));
+        long total=0,sum=0;
+        for(int i=0;i<n;i++){
+            sum+=dist[i];
+            total+=(n-children[i])*dist[i];
+        }
+        System.out.printf("%f",(double)total/sum);
+    }
+    
+}
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        graph g=new graph(n);
+        for(int a0 = 0; a0 < n-1; a0++){
+            int x = in.nextInt();
+            int y = in.nextInt();
+            g.addEdge(x-1,y-1);
+        }
+        g.util();
+        in.close();
+    }
+}
