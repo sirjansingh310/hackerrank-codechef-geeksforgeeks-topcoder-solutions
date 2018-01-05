@@ -1,0 +1,41 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    static ArrayList<String> list;
+    public static void printAllPermutations(String s,int start,int end){
+        if(start==end){
+            list.add(s);
+        }
+        else{
+            for(int i=start;i<=end;i++){
+               s=swap(s,start,i);
+               printAllPermutations(s,start+1,end);
+           ///    s=swap(s,start,i);// backtrack
+                
+            }
+        }
+    }
+    public static String swap(String s,int t1,int t2){
+        char ch[]=s.toCharArray();
+        char temp=ch[t1];
+        ch[t1]=ch[t2];
+        ch[t2]=temp;
+        return new String(ch);
+    }
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-- >0){
+		    list=new ArrayList<>();
+		    String s=sc.next();
+		    printAllPermutations(s,0,s.length()-1);
+		    Collections.sort(list);
+		    for(String i:list){
+		        System.out.print(i+" ");
+		    }
+		    System.out.println();
+ 		}
+	}
+}
