@@ -1,4 +1,4 @@
-// check if sum of 2 numbers in an sorted equals to the given sum in O(nlog(n)) time, provided it is sorted
+// check if sum of 2 numbers in a sorted array equals to the given sum in O(nlog(n)) time.
 /// Binary Search
 import java.util.*;
 class mainclass{
@@ -30,7 +30,7 @@ class mainclass{
     }
 }
 //////////////////////
-// check if sum of 2 numbers in an sorted equals to the given sum in O(n) time, provided it is sorted
+// check if sum of 2 numbers in a sorted array equals to the given sum in O(n) time.
 //Two pointer
 import java.util.*;
 class mainclass{
