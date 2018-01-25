@@ -8,7 +8,7 @@ class graph{
     private int n;
     private int board[][];
     private int row[]=new int[8];
-    private int col[]=new int[9];
+    private int col[]=new int[8];
     graph(int n,int a,int b){
         this.n=n;
         board=new int[n][n];
