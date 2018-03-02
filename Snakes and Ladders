@@ -1,0 +1,39 @@
+class graph:
+    def __init__(self):
+        self.goto =[-1]*101
+        self.dist = [1000000]*101
+    def updateGoto(self,a,b):
+        self.goto[a]=b
+    def bfs(self):
+        self.dist[1]=0
+        q = []
+        q.append(1) 
+        while len(q)>0:
+            s = q.pop()
+            if self.goto[s]!=-1:
+                if self.dist[self.goto[s]] > self.dist[s]+1:
+                    self.dist[self.goto[s]]=self.dist[s]
+                s=self.goto[s]
+            for i in range(s+1,s+7):
+                if i >=0 and i<=100:
+                    if self.dist[s] +1 <self.dist[i]:
+                        self.dist[i]=self.dist[s]+1 
+                        q.append(i)
+        if self.dist[100]>0 and self.dist[100]!=1000000:
+            print (self.dist[100])
+        else:
+            print (-1)
+                    
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    g=graph()
+    for i in range(n):
+        a,b=map(int,input().split(" "))
+        g.updateGoto(a,b)
+    m=int(input())
+    for i in range(m):
+        a,b=map(int,input().split())
+        g.updateGoto(a,b)
+    g.bfs()
+        
