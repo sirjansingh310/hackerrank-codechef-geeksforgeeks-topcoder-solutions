@@ -1,0 +1,51 @@
+#https://www.codechef.com/problems/INLO33
+class graph:
+    def __init__(self,n,m,time):
+        self.n=n
+        self.m=m
+        self.time=time 
+        self.cost=[]
+        self.inf=9999999
+        self.adj=[]
+        for i in range(self.n):
+            self.cost.append([0]*self.n)
+            self.adj.append([])
+    def addEdge(self,a,b,c):
+        self.cost[a][b]=c
+        self.cost[b][a]=c
+        self.adj[a].append(b)
+        self.adj[b].append(a) 
+    def minNode(self,visited,dist):
+        node=-1 
+        minimum=self.inf 
+        for i in range(self.n):
+            if dist[i]<minimum and visited[i]==False:
+                minimum=dist[i]
+                node=i 
+        return node 
+    def wait(self,current,time):
+        if current%time==0:
+            return 0 
+        else:
+            return time - current%time 
+    def shortestPath(self,s,d):
+        visited=[False]*self.n 
+        dist=[self.inf]*self.n
+        dist[s]=0
+        for i in range(self.n):
+            minimum=self.minNode(visited,dist)
+            visited[minimum]=True 
+            wait_time = dist[minimum]+self.wait(dist[minimum],self.time[minimum])
+            for i in self.adj[minimum]:
+                dist[i]=min(dist[i],wait_time+self.cost[i][minimum])
+        
+        print (dist[d])
+                
+s,d=map(int,input().split(" "))
+n,m=map(int,input().split(" "))
+time=[int(x) for x in input().split(" ")]
+g=graph(n,m,time)
+for i in range(m):
+    a,b,cost=map(int,input().split(" "))
+    g.addEdge(a-1,b-1,cost)
+g.shortestPath(s-1,d-1)
