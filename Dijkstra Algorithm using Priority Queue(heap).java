@@ -1,7 +1,7 @@
 /*
 hackerrank problem link: https://www.hackerrank.com/challenges/dijkstrashortreach
 Author: Sirjan Singh
-Priority Queue using heaps used, O((m+n)log(n)) solution 
+Priority Queue using heaps, O((m+n)log(n)) solution 
 */
 import java.util.*;
 class graph{ 
