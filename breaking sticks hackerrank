@@ -1,0 +1,57 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    static ArrayList<Long> getPrimeFactors(long n){
+        ArrayList<Long> rlist=new ArrayList<Long>();
+        while(n%2==0){
+            rlist.add((long)2);
+            n=n/2;
+        }
+        for(long i=3;i<=Math.sqrt(n);i=i+2){
+            while(n%i==0){
+                rlist.add(i);
+               n=n/i;
+            }
+        }
+        if(n>2)
+            rlist.add((long)n);
+        return rlist;
+    }
+    static long longestSequence(long[] a) {
+       // we have to calculate prime factors 
+       long sum=0;
+       for(int i=0;i<a.length;i++){
+           if(a[i]==1)
+               sum+=1;
+           else {
+               ArrayList<Long> pf=getPrimeFactors(a[i]);
+               if(pf.size()==1)// prime number
+                   sum+=(a[i]+1);
+               else { /// 2 2 2 3
+                  for(int j=0;j<pf.size();j++){
+                      sum+=a[i];
+                      a[i]=a[i]/pf.get(j);
+                  }
+                  sum++;
+               }
+           }
+       }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        long[] a = new long[n];
+        for(int a_i = 0; a_i < n; a_i++){
+            a[a_i] = in.nextLong();
+        }
+        long result = longestSequence(a);
+        System.out.println(result);
+        in.close();
+    }
+}
