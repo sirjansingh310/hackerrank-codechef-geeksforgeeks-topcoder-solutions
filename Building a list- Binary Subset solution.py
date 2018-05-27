@@ -1,3 +1,4 @@
+# https://www.hackerrank.com/challenges/building-a-list
 t = int(input())
 for tests in range(t):
     n = input()
