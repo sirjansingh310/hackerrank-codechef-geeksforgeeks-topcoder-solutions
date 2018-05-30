@@ -63,7 +63,6 @@ def gen(s):
        o+=word[k]
        o+=word[int(s[1])]
        return o
-    return "not found"
                         
                         
             
