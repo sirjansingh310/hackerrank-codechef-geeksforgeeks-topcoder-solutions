@@ -9,7 +9,6 @@ def result(n):
         value += str(available[q])
         available.pop(q)
         index = index%facts[i]
-        i-=1 
     return value
 
 
