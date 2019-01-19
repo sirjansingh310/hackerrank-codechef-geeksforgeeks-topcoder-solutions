@@ -11,7 +11,7 @@ public class solution{
         while(sc.hasNext()){
             s += sc.nextLine();
         }
-        Pattern pattern = Pattern.compile("<a href=\"([^\"]+)\"[^>]*>(<[^/][^>]*>)*([^<]*)?(</\\w>)*</a>");
+        Pattern pattern = Pattern.compile("<a href=\"([^\"]+)\"[^>]*>(<[^/][^>]*>)*([^<]*)?(</\\w+>)*</a>");
         Matcher matcher = pattern.matcher(s);
         while(matcher.find()){
             String output = "";
