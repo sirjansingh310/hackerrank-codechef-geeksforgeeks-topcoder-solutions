@@ -10,7 +10,7 @@ public class Solution{
         }
         boolean possible = false;
         int possibleFrom = 0;
-        for(int i=possibleFrom;i<a.length;i++){
+        for(int i=0;i<a.length;i++){
             if(size <= a[i]) 
                 continue;
             else
@@ -27,7 +27,7 @@ public class Solution{
             }
 
         long max =  -1,current = 0;
-        for(int i=0;i<a.length;i++){
+        for(int i=possibleFrom;i<a.length;i++){
             if(size > a[i] && size%a[i] == 0){
                 current = maximumDivision(a[i],a); // a[i] in this question is the final size of pile. So for size = 64 and a[i] = 2, we can't say 64/2 = 32, 2 piles of 32, it means 32 piles of size 2!!
                 current *= size/a[i];
