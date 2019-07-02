@@ -49,56 +49,56 @@ class Codechef
 	    Scanner sc = new Scanner(System.in);
 	    int t = sc.nextInt();
 	    sc.nextLine();
-		 while(t-- > 0){
-    		String matchResults[] = new String[12];
-    	    for(int i = 0; i < 12; i++){
-    	        matchResults[i] = sc.nextLine();
-    	    }
-    	    HashMap<String, Integer> points = new HashMap<>();
-    	    HashMap<String, Integer> goalDifference = new HashMap<>();
-    	    for(int i = 0; i < 12; i++){
-    	        String line[] = matchResults[i].split(" ");
-    	        String firstTeam = line[0];
-    	        String secondTeam = line[4];
-    	        if(Integer.parseInt(line[1]) > Integer.parseInt(line[3])){
-    	            if(points.containsKey(firstTeam))
-    	                points.put(firstTeam, points.get(firstTeam) + 3);
-    	            else
-    	                points.put(firstTeam, 3);
-    	        }
-    	        
-    	        else if(Integer.parseInt(line[3]) > Integer.parseInt(line[1])){
-    	            if(points.containsKey(secondTeam))
-    	                points.put(secondTeam, points.get(secondTeam) + 3);
-    	            else
-    	                points.put(secondTeam, 3);
-    	        }
-    	        else{
-    	            if(points.containsKey(firstTeam))
-    	                points.put(firstTeam, points.get(firstTeam) + 1);
-    	            else 
-    	                points.put(firstTeam, 1);
-    	            if(points.containsKey(secondTeam))
-    	                points.put(secondTeam, points.get(secondTeam) + 1);
-    	            else 
-    	                points.put(secondTeam, 1);
-    	           
-    	        }
-    	        if(goalDifference.containsKey(firstTeam)){
-    	            goalDifference.put(firstTeam, goalDifference.get(firstTeam) + Integer.parseInt(line[1]) - Integer.parseInt(line[3]));
-    	        }
-    	        else
-    	         goalDifference.put(firstTeam, Integer.parseInt(line[1]) - Integer.parseInt(line[3]));
-    	        
-    	         if(goalDifference.containsKey(secondTeam)){
-    	            goalDifference.put(secondTeam, goalDifference.get(secondTeam) + Integer.parseInt(line[3]) - Integer.parseInt(line[1]));
-    	        }
-    	        else
-    	         goalDifference.put(secondTeam, Integer.parseInt(line[3]) - Integer.parseInt(line[1]));
-    	         
-    	    }
-    	    printResult(points, goalDifference);
-    	    System.out.println();
+	     while(t-- > 0){
+    		    String matchResults[] = new String[12];
+		    for(int i = 0; i < 12; i++){
+			matchResults[i] = sc.nextLine();
+		    }
+		    HashMap<String, Integer> points = new HashMap<>();
+		    HashMap<String, Integer> goalDifference = new HashMap<>();
+		    for(int i = 0; i < 12; i++){
+			String line[] = matchResults[i].split(" ");
+			String firstTeam = line[0];
+			String secondTeam = line[4];
+			if(Integer.parseInt(line[1]) > Integer.parseInt(line[3])){
+			    if(points.containsKey(firstTeam))
+				points.put(firstTeam, points.get(firstTeam) + 3);
+			    else
+				points.put(firstTeam, 3);
+			}
+
+			else if(Integer.parseInt(line[3]) > Integer.parseInt(line[1])){
+			    if(points.containsKey(secondTeam))
+				points.put(secondTeam, points.get(secondTeam) + 3);
+			    else
+				points.put(secondTeam, 3);
+			}
+			else{
+			    if(points.containsKey(firstTeam))
+				points.put(firstTeam, points.get(firstTeam) + 1);
+			    else 
+				points.put(firstTeam, 1);
+			    if(points.containsKey(secondTeam))
+				points.put(secondTeam, points.get(secondTeam) + 1);
+			    else 
+				points.put(secondTeam, 1);
+
+			}
+			if(goalDifference.containsKey(firstTeam)){
+			    goalDifference.put(firstTeam, goalDifference.get(firstTeam) + Integer.parseInt(line[1]) - Integer.parseInt(line[3]));
+			}
+			else
+			 goalDifference.put(firstTeam, Integer.parseInt(line[1]) - Integer.parseInt(line[3]));
+
+			 if(goalDifference.containsKey(secondTeam)){
+			    goalDifference.put(secondTeam, goalDifference.get(secondTeam) + Integer.parseInt(line[3]) - Integer.parseInt(line[1]));
+			}
+			else
+			 goalDifference.put(secondTeam, Integer.parseInt(line[3]) - Integer.parseInt(line[1]));
+
+		    }
+		    printResult(points, goalDifference);
+		    System.out.println();
 		}
 	}
 }
