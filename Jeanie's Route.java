@@ -3,7 +3,9 @@ import java.util.*;
 /*
 Passes all test cases and does not use recursion:
 
-The basic idea is that we compute a minimum spanning subtree, e.g. the smallest subtree that spans all the cities that we need to deliver letters to. This can be done in O(N) time by putting all non-letter degree-1 cities in a queue, then repeatedly "pruning" them (e.g. ticking them off in a bit mask), then whenever we detect a parent that is also non-letter and has degree 1, we add it to the queue.
+The basic idea is that we compute a minimum spanning subtree, e.g. the smallest subtree that spans all the cities that we need to deliver letters to. 
+This can be done in O(N) time by putting all non-letter degree-1 cities in a queue, then repeatedly "pruning" them (e.g. ticking them off in a bit mask), then whenever we detect a child node that is also non-letter and will have a degree 1(parent is removed, so decrement degree of child),
+we add it to the queue.
 The final resulting subtree has no leaves which are non-letter cities, and also contains all letter cities, so by definition is the "minimum spanning subtree". Note this is not related to the standard minimum spanning tree algorithm.
 
 Once we have a bitmask telling us which nodes are in the subtree, we find the diameter of the subtree using two Breadth first searches (https://cs.stackexchange.com/questions/22855/algorithm-to-find-diameter-of-a-tree-using-bfs-dfs-why-does-it-work though that thread is for weight-1 edges, it is straightforward to generalize to arbitrarily weighted edges: simply keep track of all distances from the source while you are BFSing). Finally, the answer, e.g. the minimum distance needed to travel to cover the entire subtree, is just twice the total weight of that subtree minus the diameter.
@@ -15,8 +17,9 @@ class Graph{
     private boolean isTargetNode[];
     private boolean isNodePruned[];
     private int treeDiameter;
-    private int distFromBfsSource[];
+    private int distFromBfsSource[];// not the shortest dist. Just the dist we find using bfs. Bfs will yield shortest dist if and only if all edges have same weight.
     private int prunedTreeTotalWeight;
+    
     Graph(int nodeCount, boolean isTargetNode[]){
         this.isTargetNode = isTargetNode;
         this.nodeCount = nodeCount;
@@ -101,7 +104,7 @@ class Graph{
 
     public int bfs(int start){
         distFromBfsSource = new int[nodeCount]; // we only care about this in our 2nd bfs call to calculate diameter
-        Arrays.fill(distFromBfsSource, -1);
+        Arrays.fill(distFromBfsSource, -1);// unvisited
         LinkedList<Integer> queue = new LinkedList<>();
         queue.add(start);
         distFromBfsSource[start] = 0;
