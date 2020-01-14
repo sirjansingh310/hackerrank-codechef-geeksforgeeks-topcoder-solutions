@@ -23,7 +23,7 @@ public class Shake{
     }
     public static int solve(int n, long k, int arr[]){
         Arrays.sort(arr);
-        int low = 1, high = arr[n - 1] + 1, res = 0;
+        int low = 1, high = arr[n - 1], res = 0;
         while(low <= high){
             int mid = (low + high) / 2;
             if(possible(mid, arr, n, k)){ // possible to give every kid with mid number of candies
