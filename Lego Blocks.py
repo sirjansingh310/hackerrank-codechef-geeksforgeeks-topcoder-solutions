@@ -22,6 +22,13 @@ for _ in range(int(t)):
     floorCombinations[2] = 2
     floorCombinations[3] = 4
     floorCombinations[4] = 8
+     # say we have to fill for width 105
+    # we filled for 104 and 1 space is left
+    # we filled for 103 and 2 space is left
+    # we filled for 102 and 3 space is left
+    # we filled for 101 and 4 space is left
+    # the total number of ways possile to fill 105 is the sum of above!. Simple dynamic programming!!
+    
     for i in range(5, 1001):
         floorCombinations[i] = (
             floorCombinations[i - 1] + floorCombinations[i - 2] + floorCombinations[i - 3] + floorCombinations[i - 4]
