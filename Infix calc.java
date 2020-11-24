@@ -23,7 +23,7 @@ class Solution {
             if(!isOperator(token.charAt(0))) { // number
                 result.add(token);
             } else if(token.equals(")")) {
-                while(!stack.peek().equals(")")) {
+                while(!stack.peek().equals("(")) {
                     result.add(stack.pop());
                 }
                 stack.pop();
