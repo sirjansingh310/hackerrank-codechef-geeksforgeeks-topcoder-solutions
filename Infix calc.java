@@ -74,7 +74,8 @@ class Solution {
     private List<String> getTokens(String s) {
         List<String> tokens = new ArrayList<>();
         s = s.replaceAll("\\s", "");
-        String token = "" + s.charAt(0);
+        String token = "" + s.charAt(0); // just to avoid problems when first number is negative, so first char is '-'. It should be considered for the number & it 
+        // is not an operator
         
         for(int i = 1; i < s.length(); i++) {
             if(isOperator(s.charAt(i))) {
