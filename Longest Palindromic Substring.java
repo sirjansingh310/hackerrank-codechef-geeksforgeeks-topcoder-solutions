@@ -36,3 +36,59 @@ class Solution {
         return res;
  }
 }
+
+
+
+
+//another solution of mine, when tried after a year or so, similar idea
+
+// class Solution {
+//     private String getReverse(String s) {
+//         return new StringBuilder(s).reverse().toString();
+//     }
+    
+//     private String getPossiblePalindrome(String start, int left, int right, String s) {
+//         int originalLength = start.length();
+//         String current = start;
+//         while(left >= 0 && right < s.length()) {
+//             if (s.charAt(left) == s.charAt(right)) {
+//                 current += s.charAt(right);
+//                 left--;
+//                 right++;
+//             } else {
+//                 break;
+//             }
+//         }
+       
+//         if (current.length() == 1) {
+//             return current;
+//         }
+//         String palindrome = getReverse(current).substring(0, current.length() - originalLength) + current;
+
+//         return palindrome;
+//     }
+//     public String longestPalindrome(String s) {
+//         int maxLen = 1;
+//         String bestPalindrome = s.charAt(0) + "";
+        
+//         for (int i = 0; i < s.length(); i++) {
+//             String current = getPossiblePalindrome(s.charAt(i) + "", i - 1, i + 1, s);
+            
+//             if (current.length() > maxLen) {
+//                 maxLen = current.length();
+//                 bestPalindrome = current;
+//             }
+            
+//             if (i + 1 < s.length() && s.charAt(i) == s.charAt(i + 1)) {
+//                 current = getPossiblePalindrome("" + s.charAt(i) + s.charAt(i + 1), i - 1, i + 2, s);
+                
+//                 if (current.length() > maxLen) {
+//                     maxLen = current.length();
+//                     bestPalindrome = current;
+//                 }
+//             }
+//         }
+        
+//         return bestPalindrome;
+//     }
+// }
