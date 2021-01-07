@@ -43,9 +43,6 @@ class Solution {
 //another solution of mine, when tried after a year or so, similar idea
 
 // class Solution {
-//     private String getReverse(String s) {
-//         return new StringBuilder(s).reverse().toString();
-//     }
     
 //     private String getPossiblePalindrome(String start, int left, int right, String s) {
 //         int originalLength = start.length();
@@ -63,8 +60,7 @@ class Solution {
 //         if (current.length() == 1) {
 //             return current;
 //         }
-//         String palindrome = getReverse(current).substring(0, current.length() - originalLength) + current;
-
+//         String palindrome = s.substring(left + 1, right);// left and right decremented below the limts
 //         return palindrome;
 //     }
 //     public String longestPalindrome(String s) {
