@@ -1,11 +1,11 @@
 // https://leetcode.com/explore/item/3617
 
 // Accepted Solution: Dijkstra With Min Heap(Priority queue)
-// How it works: exact like bfs, but using PriorityQueue instead of normal queue
-// don't process in FIFO way, process with node which has minimum distance seen so far first, stored in PQ
-// Another subtle difference with BFS is we don't mark the child node as visited(in this case isPicked array) as soon as a parent visits it(in the for loop)
-// This is done so it can get updated later on from other nodes if that node's path to this child is lesser than previously computed
-// we mark it as isPicked / visited only after it becomes a parent(or in other words is the node with min distance from source value and is on top of heap)
+// How it works: exact like bfs, but using PriorityQueue instead of normal queue.
+// don't process in FIFO way, process with node which has minimum distance seen so far first, stored in PQ.
+// Another subtle difference with BFS is we don't mark the child node as visited(in this case isPicked array) as soon as a parent visits it(in the for loop).
+// This is done so it can get updated later on from other nodes if that node's path to this child is lesser than previously computed.
+// We mark it as isPicked / visited only after it becomes a parent(or in other words is the node with min distance from source value and is on top of heap)
 
 
 class Solution {
