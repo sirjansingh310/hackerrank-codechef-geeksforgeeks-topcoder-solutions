@@ -7,7 +7,31 @@
 // This is done so it can get updated later on from other nodes if that node's path to this child is lesser than previously computed.
 // We mark it as isPicked / visited only after it becomes a parent(or in other words is the node with min distance from source value and is on top of heap)
 
+// Some accepted ideas: 
+/*
+KRUSHKAL MST
 
+BFS/DFS USING Binarysearch: 
+
+binary_search() {
+int low = 0, high = 10^6. (constraints of heights array, so we can tell these are the extreme values of our minimum effort to jump a node to another node)
+int minEffort;
+while (low <= high) {
+      int mid = (low + high) / 2
+      if (dfs(mid, 0, 0)) { // find if a path exists by starting dfs and has the total traveling cost = mid)
+            high = mid; // reduce the search space for min in next bfs, we can find an even lower value, then good
+            minEffort = mid;
+      } else {
+            low = mid + 1; // increase search space, no path with cost = mid
+      }
+}
+
+return minEffort;
+}
+
+*/
+
+// My solution : Dijkstra with PriorityQueue
 class Solution {
     private class DijkstraNode {
         int rowValue, colValue, distanceCalculatedFromSource;
