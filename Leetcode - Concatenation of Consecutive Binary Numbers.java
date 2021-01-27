@@ -12,7 +12,7 @@ class Solution {
         
         for (int i = 2; i <= n; i++) {
             if (isPowerOfTwo(i)) { // power of two detected, length of binary increases
-                length++;
+                length++;// need to shift all bits to left with one extra than prev length, as power of 2.
             }
             current = (current << length) % mod;// prev binary = 11100, now make it 1110000000 
             current = (current + i) % mod;// add to fill in new zero Bits on right with new number, i.e concatinaton 
