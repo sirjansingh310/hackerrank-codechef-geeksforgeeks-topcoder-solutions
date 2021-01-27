@@ -15,7 +15,7 @@ class Solution {
                 length++;
             }
             current = (current << length) % mod;// prev binary = 11100, now make it 1110000000 
-            current = (current + i) % mod;// Binary OR to fill in new zero Bits on right with new number, i.e concatinaton 
+            current = (current + i) % mod;// add to fill in new zero Bits on right with new number, i.e concatinaton 
         }
         
         return (int)(current % mod);
