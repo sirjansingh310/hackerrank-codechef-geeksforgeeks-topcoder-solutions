@@ -70,3 +70,20 @@ class Solution {
         return root;
     }
 }
+
+
+/*
+Awesome recursive solution as per the editorial
+
+class Solution {
+    public TreeNode trimBST(TreeNode root, int low, int high) {
+        if (root == null) return root;
+        if (root.val > high) return trimBST(root.left, low, high); // if root is invalid because it is more than high, all children of root.right must be trimmed(since bst's property). Discard right child and return left
+        if (root.val < low) return trimBST(root.right, low, high);// same logic, discard left and return right
+
+        root.left = trimBST(root.left, low, high); // root is valid, re initialize root.left with trimBST(root.left, low, high) because root.left subtree may have invalid nodes. 
+        root.right = trimBST(root.right, low, high);// root.is valid. re initialize root.right with trimBST(root.right, low, high) because root.right subtree may have invalid nodes.
+        return root;// trimming done on children, return root
+    }
+}
+*/
