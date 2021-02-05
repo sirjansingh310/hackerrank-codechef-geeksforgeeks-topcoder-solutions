@@ -14,11 +14,11 @@ class Solution {
             path = path.substring(0, path.length() - 1);
         }
         
-        String[] instructions = path.substring(1, path.length()).split("/");
+        String[] folders = path.substring(1, path.length()).split("/");// ignore root folder /, for all other folders, / is separator betweeen parent & child folder
         
         Stack<String> stack = new Stack<>();
         
-        for (String s : instructions) {
+        for (String s : folders) {
             if (s.equals(".")) {
                 continue;
             } else if (s.equals("..") && stack.size() > 0) {
