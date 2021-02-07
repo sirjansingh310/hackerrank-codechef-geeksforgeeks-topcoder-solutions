@@ -10,12 +10,12 @@ class Solution {
             }
         }
         
-        int first = charIndexes.get(0);
+        int first = charIndexes.get(0);// constraint that minimum one char is string s will be char c, so safe.
         int lastRetrieved = 0;
         int second = -1;
         if (charIndexes.size() > 1) {
             second = charIndexes.get(1);
-            lastRetrieved = 1;;// index from charIndexes collection where last index of char c was extracter
+            lastRetrieved = 1;;// index from charIndexes collection where last index of char c was extracted
         }
         
         
