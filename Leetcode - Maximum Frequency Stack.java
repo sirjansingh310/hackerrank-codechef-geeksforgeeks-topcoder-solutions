@@ -70,6 +70,27 @@ class FreqStack {
         return list != null && !list.isEmpty();
     }
 }
+/*
+The priortyQueue used here will contain no duplicate element. As a number is pushed/pop, its insertOrder / freq is updated and the heap is re-heapify by removing it 
+first, update freq and insert order data structure, and add the number again.
+In this way, our PQ contains no duplicate and always accurate with numbers heapified according to insert order + freq comparasion. 
+
+It is a good solution, as we save space on PQ, but time is bit more, multiple (O(logN)) operations on it, overall O(logN) in push / pop on FreqStack, but still. 
+
+Another solution is to create a "Element" class obj.
+
+class Element {
+int number;
+int insertOrder;
+int freqWhileElementInserted;
+}
+
+Element would be the snapshot of a number being pushed / popped out of FreqStack
+Our PQ would be of type Element.
+In push operation, we would simply push a new Element to the PQ. And during pop, remove the top most of the heap.
+
+We would not do a explicit re heapify at all. But our PQ would be big, and during push / pop, re heapify is anyways done internally.
+*/
 
 /**
  * Your FreqStack object will be instantiated and called as such:
