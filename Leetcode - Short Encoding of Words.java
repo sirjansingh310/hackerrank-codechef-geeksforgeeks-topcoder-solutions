@@ -74,32 +74,3 @@ class Solution {
         return length;
     }
 }
-
-
-// a simpler version of same logic, but reduced all b in B to a single word containing max freq of all 'a' to 'z' in all b of B
-
-
-class Solution {
-   public List<String> wordSubsets(String[] A, String[] B) 
-   {
-        int[] t = new int[26];
-        for(String b : B) 
-        {
-            int[] tmp = new int[26];
-            for(char c : b.toCharArray()) tmp[c - 'a']++;
-            for(int i = 0; i < 26; i++) t[i] = Math.max(t[i], tmp[i]);
-        }
-        
-        List<String> res = new ArrayList<>();  
-        for(String a : A) if(isUniversal(a, t)) res.add(a);
-        return res;
-    }
-    
-    boolean isUniversal(String s, int[] t) 
-    {
-        int[] tmp = new int[26];
-        for(char c : s.toCharArray()) tmp[c - 'a']++;
-        for(int i = 0; i < 26; i++) if(tmp[i] < t[i]) return false;
-        return true;
-    }
-}
