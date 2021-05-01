@@ -10,7 +10,7 @@ class Solution {
                 diffInHeightsPQ.add(diff);
             }
             
-            if (diffInHeightsPQ.size() > ladders) { // we have enough differences(jumps to make) to cover, give the cheap diff jump a job for bricks, since ladders are not height restricted and used for bigger jumps. Image the larger jumps which are deep in PQ, were part of ladder jump, and thus we came so far          
+            if (diffInHeightsPQ.size() > ladders) { // we have enough differences(jumps to make) to cover, give the cheap diff jump a job for bricks, since ladders are not height restricted and used for bigger jumps. imagine the larger jumps which are deep in PQ, were part of ladder jump, and thus we came so far          
                 bricks -= diffInHeightsPQ.poll();
             }
             
