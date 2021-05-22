@@ -8,7 +8,7 @@ class Solution {
             solutions.add(prettyString(placedQueens));
             return;
         }
-    
+        // move col wise in current row
         for (int i = 0; i < n; i++) {
             int[] cordinate = new int[]{row, i};
             if (isPossibleToPlace(placedQueens, cordinate)) {
