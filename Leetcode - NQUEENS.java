@@ -40,6 +40,7 @@ class Solution {
     }
     
     private List<String> prettyString(List<int[]> queens) {
+        // pretty string for n * n chessboard. this is called for each possible solution
         int n = queens.size();
         List<String> result = new ArrayList<>();
         
