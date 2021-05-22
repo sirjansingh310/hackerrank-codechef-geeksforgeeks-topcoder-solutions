@@ -26,7 +26,7 @@ class Solution {
         boolean conflict = false;
         
         for (int[] queen : placedQueens) {
-            // check row & col
+            // check row, col & diagnol
             conflict |= (queen[0] == cordinate[0]);
             conflict |= (queen[1] == cordinate[1]);
             conflict |= (Math.abs(queen[0] - cordinate[0]) == Math.abs(queen[1] - cordinate[1]));
