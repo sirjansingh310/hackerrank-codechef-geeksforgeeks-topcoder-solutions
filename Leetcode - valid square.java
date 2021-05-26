@@ -50,15 +50,31 @@ class Solution {
         double diagnol1 = getDistance(p1, p3);
         double diagnol2 = getDistance(p2, p4);
         
-        return side1 == side3 && side2 == side4 && side1 == side2 && diagnol1 == diagnol2;
+        boolean perfectSquare =  side1 == side3 && side2 == side4 && side1 == side2 && diagnol1 == diagnol2;
+        
+        if (perfectSquare) {
+            return side1 > 0;
+        }
+        return false;
     }
     public boolean validSquare(int[] p1, int[] p2, int[] p3, int[] p4) {
+        Set<String> unique = new HashSet<>();
         
         int[][] points = new int[4][2];
         points[0] = p1;
         points[1] = p2;
         points[2] = p3;
         points[3] = p4;
+        
+        for (int[] point: points) {
+            unique.add(point[0] + "_" + point[1]);
+        }
+        
+        if (unique.size() != 4) {
+            return false;
+        }
+        
+        
         int count = 1;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
