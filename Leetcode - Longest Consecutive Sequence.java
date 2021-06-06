@@ -52,7 +52,9 @@ class Solution {
         }
         int bestLength = 0;
         for (int num : numSet) {
-            if (!numSet.contains(num - 1)) { // if it contains, it is already processed
+            if (!numSet.contains(num - 1)) { // if it contains, it is already processed. Imagine all numbers are sorted in the arr(1,2,3...) we start from 
+                // 1 and calculate the length below(as 0 is not in numSet, we start from 1. In the next iteration of the loop, when we arrive at 2, we skip finding
+                // the length. 
                 int currentLength = 1;
                 int current = num;
                 while (numSet.contains(current + 1)) {
