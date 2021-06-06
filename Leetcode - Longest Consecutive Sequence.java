@@ -1,8 +1,7 @@
-//https://leetcode.com/explore/featured/card/june-leetcoding-challenge-2021/603/week-1-june-1st-june-7th/3769/
 class Solution {
     private Set<Integer> alreadySeen = new HashSet<>();
-    private int findLargestSubseq(int num, final Map<Integer, Integer> freq) {
-        if (!freq.containsKey(num)) {
+    private int findLargestSubseq(int num, final Set<Integer> numsSet) {
+        if (!numsSet.contains(num)) {
             return 0;
         }
         
@@ -11,28 +10,28 @@ class Solution {
         int length = 1;
         
         if (!alreadySeen.contains(num + 1)) {
-            length += findLargestSubseq(num + 1, freq);
+            length += findLargestSubseq(num + 1, numsSet);
         }
         
         if (!alreadySeen.contains(num - 1)) {
-            length += findLargestSubseq(num - 1, freq);
+            length += findLargestSubseq(num - 1, numsSet);
         }
         
         return length;
     }
     
     public int longestConsecutive(int[] nums) {
-        Map<Integer, Integer> freq = new HashMap<>();
+        Set<Integer> numsSet = new HashSet<>();
         
         for (int i : nums) {
-            freq.put(i, freq.getOrDefault(i, 0) + 1);
+            numsSet.add(i);
         }
         
         int maxLength = 0;
         
         for (int i : nums) {
             if (!alreadySeen.contains(i)){
-                maxLength = Math.max(maxLength, findLargestSubseq(i, freq));
+                maxLength = Math.max(maxLength, findLargestSubseq(i, numsSet));
             }
             
         }
