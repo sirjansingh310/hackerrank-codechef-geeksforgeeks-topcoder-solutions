@@ -52,6 +52,8 @@ class Element implements Comparable<Element>{
         return "num = " + num + " index = " + index + "\n";
     }
 }
+
+// O(NlogK) DP + Max-heap
 class Solution {
     public int maxResult(int[] nums, int k) {
         int[] dp = new int[nums.length];
