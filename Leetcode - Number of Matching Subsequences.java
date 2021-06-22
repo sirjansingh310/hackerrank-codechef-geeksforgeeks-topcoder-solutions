@@ -1,7 +1,7 @@
 // https://leetcode.com/explore/challenge/card/june-leetcoding-challenge-2021/606/week-4-june-22nd-june-28th/3788/
 class Solution { 
     private boolean isSubsequence(Map<Character, List<Integer>> positions, String word) {
-        int[] charOffset = new int[26];
+        int[] charOffset = new int[26]; // cursor pointing to latest selected index from a list of its positions in original word for a given character
         int prev = -1;
         // all positions of characters in word should be in order (and should exist) wrt the word to check against
         for (int i = 0; i < word.length(); i++) {
