@@ -1,17 +1,14 @@
 // https://leetcode.com/explore/challenge/card/june-leetcoding-challenge-2021/606/week-4-june-22nd-june-28th/3788/
-class Solution {    
+class Solution {
+    
     private boolean isSubsequence(Map<Character, List<Integer>> positions, String word) {
         int[] charOffset = new int[26];
         int prev = -1;
         // all positions of characters in word should be in order (and should exist) wrt the word to check against
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            if (positions.containsKey(c) && positions.get(c).size() > charOffset[c - 'a']
-               && positions.get(c).get(charOffset[c - 'a']) > prev) {
-                prev = positions.get(c).get(charOffset[c - 'a']);
-                charOffset[c - 'a']++;
-            } else if (positions.containsKey(c) && positions.get(c).size() > charOffset[c - 'a']) {
-                // get offset just bigger than prev
+             if (positions.containsKey(c) && positions.get(c).size() > charOffset[c - 'a']) {
+                // get off set just bigger than prev
                 boolean found = false;
                 List<Integer> list = positions.get(c);
                 for (int j = 0; j < list.size(); j++) {
