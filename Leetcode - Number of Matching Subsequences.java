@@ -1,6 +1,5 @@
 // https://leetcode.com/explore/challenge/card/june-leetcoding-challenge-2021/606/week-4-june-22nd-june-28th/3788/
-class Solution {
-    
+class Solution { 
     private boolean isSubsequence(Map<Character, List<Integer>> positions, String word) {
         int[] charOffset = new int[26];
         int prev = -1;
@@ -11,7 +10,8 @@ class Solution {
                 // get off set just bigger than prev
                 boolean found = false;
                 List<Integer> list = positions.get(c);
-                for (int j = 0; j < list.size(); j++) {
+                int start = charOffset[c - 'a'];
+                for (int j = start; j < list.size(); j++) {
                     if (list.get(j) > prev) {
                         prev = list.get(j);
                         charOffset[c - 'a'] = j;
