@@ -4,8 +4,11 @@ class Solution {
     // anytime and there is no visited array / restriction of visit one time only. A BFS Would time out since we are making so many moves(no visited) without cache
   
     
-    private final Map<String, Integer> memo = new HashMap<>();// or a int[][][] dp = new int[m][n][maxMove+1]. We can reach a point i, j at max maxMoves times
-    // and each time we can put the ball out of bounds.
+    private final Map<String, Integer> memo = new HashMap<>();
+    // Recursive approach: exhaust all possibilities and find count
+    // dp approach: if i am standing at point i, j with m moves in hand to take, how many out of bounds from this point?
+    // we have applied this logic by caching in memo with a top down recursive approach.
+    
     private final int[] rowMoves = {-1, 1, 0, 0};
     private final int[] colMoves = {0, 0, 1, -1};
     private final int MOD = 1000000007;
