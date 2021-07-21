@@ -5,7 +5,7 @@ for each of these local groups, we see the context obj, which has all the info o
 */
 class DominoeContext { // a local group of dots
     int count, startIndex, endIndex;
-    boolean surroundedByFallingLeft, surroundedByFallingRight; // true right dominoe on the left side and left dominoe on the right side
+    boolean surroundedByFallingLeft, surroundedByFallingRight; // true if right dominoe on the left side and left dominoe on the right side
     
     
     @Override
