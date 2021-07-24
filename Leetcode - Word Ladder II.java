@@ -3,6 +3,8 @@
 // bfs with little trick of allowing even if visited(if and only if it is a better or equal solution than previous recorded solution)
 // here our graph is unweighted and undirected(so bfs can do the trick). we will consider a node even if the dist so far is equal to prev recorded dist, as it yeilds a new solution, which is valid
 
+
+// solution from editorial: https://leetcode.com/problems/word-ladder-ii/solution/ . Good sol, forming a strict DAG from beginword to endword.
 class Solution {
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         List<List<String>> result = new ArrayList<>();
