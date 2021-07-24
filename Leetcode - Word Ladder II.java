@@ -1,6 +1,7 @@
 // https://leetcode.com/explore/challenge/card/july-leetcoding-challenge-2021/611/week-4-july-22nd-july-28th/3825/
 // find all shortest paths and print them
-// bfs with little trick of allowing even if visited(if and only if it is a better solution than previous recorded solution)
+// bfs with little trick of allowing even if visited(if and only if it is a better or equal solution than previous recorded solution)
+// here our graph is unweighted and undirected(so bfs can do the trick). we will consider a node even if the dist so far is equal to prev recorded dist, as it yeilds a new solution, which is valid
 
 class Solution {
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
