@@ -21,7 +21,7 @@
 // Programming approach, my solution
 // Both play optimally and the total stones are odd in number so there is never a tie.
 // We find the best possible alex score, if that is more than 50% of all score, that means alex will win. otherwise lee will win 
-// Time complexity: O(N^2)
+// Time complexity: O(N^2) We reach combination of start and end positions. We memoize it to keep it O(N^2)
 // This solution is true solution if the constraints given in problem don't exist. Like odd number of piles. 
 class Solution {
     private Map<String, Integer> map = new HashMap<>();
