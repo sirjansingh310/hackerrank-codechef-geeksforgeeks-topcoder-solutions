@@ -3,15 +3,26 @@
 
 // Mathematical reasoning: o(1) alex wil always win the game !!!!!!!!!. There are even number of piles and total stones in all piles is odd, and alex is at advantage
 // by starting first.
-// At the end of the day, both alex and bob will have equal number of piles.
-// Lets say 2 piles.. [1, 12] Alex wins by taking 12 stoned pile
-// Let's say 4 piles .. [1,2,5,7] Alex is at advantage by starting first. Takes 7, and bob takes 5, alex takes 2 and wins the game.
-// This idea is true for all N when N is equal. Wow 
+// Alex is first to pick pile.
+// piles.length is even, and this lead to an interesting fact:
+// Alex can always pick odd indexed piles or always pick even indexed piles!
+
+// For example,
+// If Alex wants to pick even indexed piles piles[0], piles[2], ....., piles[n-2],
+// he picks first piles[0], then Lee can pick either piles[1] or piles[n - 1].
+// Every turn, Alex can always pick even indexed piles and Lee can only pick odd indexed piles.
+
+// In the description, we know that sum(piles) is odd.
+// If sum(piles[even]) > sum(piles[odd]), Alex just picks all evens and wins.
+// If sum(piles[even]) < sum(piles[odd]), Alex just picks all odds and wins.
+
+// So, Alex always defeats Lee in this game.
 
 // Programming approach, my solution
 // Both play optimally and the total stones are odd in number so there is never a tie.
-// We find the best possible alex score, if that is more than 50% of all score, that means alex will win. otherwise bob will win 
+// We find the best possible alex score, if that is more than 50% of all score, that means alex will win. otherwise lee will win 
 // Time complexity: O(N^2)
+// This solution is true solution if the constraints given in problem don't exist. Like odd number of piles. 
 class Solution {
     private Map<String, Integer> map = new HashMap<>();
     
