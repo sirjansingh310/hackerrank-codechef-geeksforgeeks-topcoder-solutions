@@ -6,7 +6,7 @@
 
 // First Solution. DP (recursion + memoization)
 // Sort the Jobs by start time. Now when you are at a position to take the job, you can do it or skip it. If you do the job, calculate the profit considering this job
-// or skip this(both the cases are in consideration with there are future jobs). If no job is in future, consider this only and stop
+// or skip this
 // Return the max of the above. 
 
 
@@ -58,7 +58,7 @@ class Solution {
             return memo.get(currentJobIndex);
         }
         Job currentJob = jobs.get(currentJobIndex);
-        int bestProfit = -1; // best profit if we start here at currentJobIndex
+        int bestProfit = currentJob.profit; // best profit if we start here at currentJobIndex
         
         // Case 1) We consider doing this job and then our next job will be first job found
         // without conflict
@@ -72,9 +72,6 @@ class Solution {
         // Case 2) We discard this job and simply move on
         bestProfit = Math.max(bestProfit, findBestProfit(jobs, currentJobIndex + 1));
         
-        
-        // Case 3) Our current job is the last possible job(maybe last in list or middle in list with all conflicting from here)
-        bestProfit = Math.max(currentJob.profit, bestProfit);
         memo.put(currentJobIndex, bestProfit);
         return bestProfit;
     }
@@ -132,7 +129,7 @@ class Solution {
             return memo.get(currentJobIndex);
         }
         Job currentJob = jobs.get(currentJobIndex);
-        int bestProfit = -1; // best profit if we start here at currentJobIndex
+        int bestProfit = currentJob.profit; // best profit if we start here at currentJobIndex
         
         // Case 1) We consider doing this job and then our next job will be first job found
         // without conflict. Now since our jobs are sorted, we can use binary search
@@ -143,10 +140,7 @@ class Solution {
         
         // Case 2) We discard this job and simply move on
         bestProfit = Math.max(bestProfit, findBestProfit(jobs, currentJobIndex + 1));
-        
-        
-        // Case 3) Our current job is the last possible job(maybe last in list or middle in list with all conflicting from here)
-        bestProfit = Math.max(currentJob.profit, bestProfit);
+       
         memo.put(currentJobIndex, bestProfit);
         return bestProfit;
     }
