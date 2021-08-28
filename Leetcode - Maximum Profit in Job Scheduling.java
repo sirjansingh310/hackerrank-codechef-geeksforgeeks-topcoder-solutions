@@ -58,7 +58,7 @@ class Solution {
             return memo.get(currentJobIndex);
         }
         Job currentJob = jobs.get(currentJobIndex);
-        int bestProfit = currentJob.profit; // best profit if we start here at currentJobIndex
+        int bestProfit = currentJob.profit;
         
         // Case 1) We consider doing this job and then our next job will be first job found
         // without conflict
@@ -129,7 +129,7 @@ class Solution {
             return memo.get(currentJobIndex);
         }
         Job currentJob = jobs.get(currentJobIndex);
-        int bestProfit = currentJob.profit; // best profit if we start here at currentJobIndex
+        int bestProfit = currentJob.profit;
         
         // Case 1) We consider doing this job and then our next job will be first job found
         // without conflict. Now since our jobs are sorted, we can use binary search
