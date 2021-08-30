@@ -7,11 +7,7 @@
 
 class Solution {
     public int maxCount(int m, int n, int[][] ops) {
-        if (ops == null || ops.length == 0) {
-            return m * n;
-        }
-        
-        int minX = Integer.MAX_VALUE, minY = Integer.MAX_VALUE;
+        int minX = m, minY = n;
         
         for (int[] op : ops) {
             minX = Math.min(minX, op[0]);
