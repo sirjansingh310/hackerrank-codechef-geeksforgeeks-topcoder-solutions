@@ -1,5 +1,9 @@
 // https://leetcode.com/problems/array-nesting/
 // TC: O(N). Since we count / add in set a element at most once
+// Why atmost once, since elements in set will be same irrespective of the source.
+// It is a cycle actually and not a list(notice we break if we have seen something before)
+// There is no concept of "source" in cycle. So each element will be added to set atmost once. 
+
 // Recursive
 class Solution {
     private boolean[] visited;
