@@ -32,7 +32,7 @@
     Right now, hardcoded it to return 0, so all trees are in same bucket(hash value are same, hashmap collisions!!!)
     but then equals will guarantee uniqueness
     
-    General Rule of thumb in general is classes used as keys should be immutable(So hashcode and equals won't have side effects)
+    General Rule of thumb is classes used as keys should be immutable(So hashcode and equals won't have side effects)
     If immutability can't be possible, we should have equals and hashcode based on some immutable id. (How we do in prod for many things, primary key considered,
     Or just have Set and HashMap keys as these primary key ids and point to the obj itself in value of map).
 */
