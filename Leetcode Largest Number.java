@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/largest-number/
 
+
 class Solution {
     public String largestNumber(int[] nums)  
     {   
@@ -13,14 +14,10 @@ class Solution {
         });
         
         String result =  strings.stream().collect(Collectors.joining(""));
-        boolean allZero = true;
-        for (char c : result.toCharArray()) {
-            if (c != '0') {
-                allZero = false;
-                break;
-            }
+
+        if (result.charAt(0) == '0') {
+            return "0";
         }
-        
-        return allZero ? "0" : result;
+        return result;
     }
 }
