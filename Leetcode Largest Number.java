@@ -1,5 +1,4 @@
 // https://leetcode.com/problems/largest-number/
-import java.math.BigInteger;
 
 class Solution {
     public String largestNumber(int[] nums)  
@@ -8,8 +7,8 @@ class Solution {
             .collect(Collectors.toList());
                 
         Collections.sort(strings, (s1, s2) -> {
-            BigInteger b1 = new BigInteger(s1 + s2);
-            BigInteger b2 = new BigInteger(s2 + s1);
+            String b1 = s1 + s2;
+            String b2 = s2 + s1;
             return b2.compareTo(b1);
         });
         
