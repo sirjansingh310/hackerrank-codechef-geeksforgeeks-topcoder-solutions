@@ -60,3 +60,29 @@ class Solution {
         }
     }
 }
+
+
+// SOLUTION 2, Iterate from forward and backward both, so if we miss something, it is covered by the other
+
+class Solution {
+    public int maxProduct(int[] nums) {
+        int forwardProduct = 1, backwardProduct = 1, maxProduct = Integer.MIN_VALUE;
+        
+        for (int i = 0; i < nums.length; i++) {
+            forwardProduct *= nums[i];
+            maxProduct = Math.max(maxProduct, forwardProduct);
+            
+            if (forwardProduct == 0) {
+                forwardProduct = 1;
+            }
+            
+            backwardProduct *= nums[nums.length - i - 1];
+            maxProduct = Math.max(maxProduct, backwardProduct);
+            if (backwardProduct == 0) {
+                backwardProduct = 1;
+            }
+        }
+        
+        return maxProduct;
+    }
+}
