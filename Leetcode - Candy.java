@@ -62,6 +62,7 @@ class Solution {
     private int fillLeft(List<Integer> list, int index, List<Integer> candies) {
         int count = 1;
         int indexCopy = index;
+        // go from peak -> bottom
         while (index != 0 && list.get(index - 1) <= list.get(index)) {
             count++;
             index--;
@@ -70,6 +71,7 @@ class Solution {
             index++;
         }
         int candy = 1;
+        // fill bottom to peak
         while (index <= indexCopy) {
             if (list.get(index).intValue() == list.get(index - 1).intValue()) {
                 candy = 1;
@@ -84,6 +86,7 @@ class Solution {
     private int fillRight(List<Integer> list, int index, List<Integer> candies) {
         int count = 1;
         int indexCopy = index;
+        // go from peak -> bottom
         while (index != list.size() -1 && list.get(index + 1) <= list.get(index)) {
             count++;
             index++;
@@ -92,6 +95,7 @@ class Solution {
             index--;
         }
         int candy = 1;
+        // fill bottom to peak
         while (index >= indexCopy) {
             if (list.get(index).intValue() == list.get(index + 1).intValue()) {
                 candy = 1;
