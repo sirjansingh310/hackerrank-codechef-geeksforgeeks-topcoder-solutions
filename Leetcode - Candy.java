@@ -3,8 +3,12 @@
 // If only one peak is present, go to left bottom, fill up candies from bottom to peak starting from 1. If there is a tie, reset candy count to 1
 // Same for right, now we have filled left and right correctly. For peak index itself, it will be maximum from left or right.
 // if multiple peaks exist, do the same. But no need to choose for maximum as they are different and their respective values are returned from fillLeft and fillRight.
-// Since we are dealing with List<Integer>, avoid mistake of == check, use .equals or .intValue()
+// Since we are dealing with List<Integer>, avoid mistake of == check, use .equals() or .intValue()
 // Greedy solution. O(N) O(N) time and space.
+
+// Since we are dealing with peaks/slopes here and filling from 1 when we are at bottom, notice we need not do this process left to right once, 
+// and right to left once. Since we are filling from bottom, the bottom value, which is part of 2 slopes(ex 1,2,1,2, here 2nd 1 is part of 2 slopes),
+// will always have optimal candy count, i.e 1, and we start filling from it. So a single iteration from left to right will always be optimal
 
 class Solution {
     private final class Peak {
