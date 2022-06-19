@@ -4,7 +4,7 @@
 // On a single key stroke, we can have at most 3 results. 
 // Solution -> Sort products. Insert them into trie. 
 // For each key stroke, we have a search term. Go to node which matches this search term in the trie. We might be at the product or not in the trie(indicated
-by isEndForAWord flag). Both scenarios will be handled by dfs itself. 
+// by isEndForAWord flag). Both scenarios will be handled by dfs itself. 
 // From this trie node, do dfs in the trie. Wheneven we encounter a word match, insert in list. Limit list to 3 as base case of dfs. 
 class Node {
     Node[] next;
