@@ -110,6 +110,8 @@ class Solution {
 // As we are inserting nodes into trie, we know this product can be found in the current inserted node. 
 // We store a list whose size can be at max three, known as matchedWordsFromHere. 
 // While we are at currentSearchNode in the trie, we can directly add this list!! No need to perform dfs on this node
+// matchedWordsFromHere acts exactly like an inverted index. We need not do a scan / search on trie, rather use this reverse mapping of Node -> product. 
+// Lot faster but more space
 
 class Node {
     Node[] next;
@@ -117,7 +119,7 @@ class Node {
     boolean isEndForAWord;
     
     List<String> matchedWordsFromHere = new ArrayList<>(); // as we insert in trie, we add words to this list
-    /// Next time we are at a node, we already know what words are possible to search from here. 
+    /// Next time we are at a node, we already know what words are possible to search from here. It is an inverted index. node -> List of matches.
     
     public Node(char current) {
         this.current = current;
