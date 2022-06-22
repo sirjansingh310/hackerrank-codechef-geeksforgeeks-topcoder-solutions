@@ -2,7 +2,6 @@
 class Solution {
     public int trap(int[] height) {
         int water = 0;
-        Stack<Integer> stack = new Stack<>();
         int[] maxTillNowLeft = new int[height.length]; // tells which number is max from index 0... i
         int[] maxTillNowRight = new int[height.length];// tells which number is max from index n-1..i
         int[] wall = new int[height.length]; // min of both arrays at i index. tells which wall will block flow for element at i. That we will consider for calculation
