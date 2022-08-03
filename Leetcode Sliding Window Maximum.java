@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/sliding-window-maximum/
-// Todo: add O(N) Solution using deque (deque internally works using doubly linked list)
+// Todo: add O(N) Solution using deque (deque by own can be created using doubly linked list, or use Deque from java)
 class Solution {
     private class Node implements Comparable<Node> {
         int number;
