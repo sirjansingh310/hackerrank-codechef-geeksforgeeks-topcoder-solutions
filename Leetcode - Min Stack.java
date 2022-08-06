@@ -3,7 +3,7 @@ class MinStack {
     private class ListNode {
         int number;
         ListNode next;
-        
+        // Interesting learning, private constructor is still in scope of the outer class, so it can call it. 
         private ListNode(int number) {
             this.number = number;
         }
