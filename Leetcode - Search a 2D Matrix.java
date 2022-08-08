@@ -7,7 +7,7 @@
 // we can do binary search first rows, check which row will have the element. (by checking first and last elements in that col, check the bounds)
 // once we know the exact row, we simply do binary search of columns on that row to find the element
 // time complexity : O(logM) + O(logN) or O(logN) when m == n
-// below solution is much consise version of that where we move rows or cols in one loop
+// below solution is much consise version 1 while loop, but with worst case time of O(m) + O(n). 
 
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
