@@ -20,6 +20,8 @@ class Solution {
 
 
 
+// watch this video for intuition https://www.youtube.com/watch?v=on2hvxBXJH4&ab
+
 /* Binary search approach
 Build LIS intuitively 
 Let lis be our Longest increase subseq
