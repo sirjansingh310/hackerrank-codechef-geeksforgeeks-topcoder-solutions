@@ -2,6 +2,8 @@
 // solution 1, inorder search and see if sorted
 // solution 2, for each subtree, store max and min at that subtree, including the root of subtree into consideration. Now check for each node, if it is valid
 // by checking max at left and min at right with root.val. Repeat it for left and right subtree also
+// solution 3, easiest of all, do solution 2 but in place, validate current node is current from left and right node values, and do same recursively
+// here we need not check deep node with top node like solution 2, because we know if the current recursion call is made, the values on top are verified.
 
 /**
  * Definition for a binary tree node.
@@ -99,5 +101,18 @@ class Solution {
         long minFromRightSubtree = minMap.getOrDefault(root.right, Long.MAX_VALUE);
         boolean isValid = root.val > maxFromLeftSubtree && root.val < minFromRightSubtree;
         return isValid && validateTree(root.left) && validateTree(root.right);
+    }
+}
+
+// sol 3
+public class Solution {
+    public boolean isValidBST(TreeNode root) {
+        return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+    
+    public boolean isValidBST(TreeNode root, long minVal, long maxVal) {
+        if (root == null) return true;
+        if (root.val >= maxVal || root.val <= minVal) return false;
+        return isValidBST(root.left, minVal, root.val) && isValidBST(root.right, root.val, maxVal);
     }
 }
