@@ -2,6 +2,7 @@
 // https://www.youtube.com/watch?v=wjYnzkAhcNk&ab_channel=NeetCode
 // Not a very intuitive solution. The question boils down to 
 // finding where loop starts in a linked list with loop
+//https://leetcode.com/problems/find-the-duplicate-number/
 class Solution {
     public int findDuplicate(int[] nums) {
         int slow = 0, fast = 0;
