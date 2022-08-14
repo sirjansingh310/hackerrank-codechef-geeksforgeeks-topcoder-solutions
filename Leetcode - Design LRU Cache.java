@@ -1,83 +1,87 @@
-/// read this blog https://krishankantsinghal.medium.com/my-first-blog-on-medium-583159139237
+// Doubly Linked List LRU Cache
 class LRUCache {
-    private class Entry {
-        int key;
-        int value;
-        Entry left, right;
+    
+    private class ListNode {
+        int number;
+        ListNode prev;
+        ListNode next;
+        final int key;
         
-        public String toString() {
-            return "key = "  + key + " " + " value = " + value; 
+        private ListNode(int key, int number) {
+            this.key = key;
+            this.number = number;
         }
     }
-    private Map<Integer, Entry> map;
-    private Entry start, end;
-    private int allowedSize;
+    
+    private int capacity;
+    private Map<Integer, ListNode> cache;
+    private ListNode head;
+    private ListNode tail;
     
     public LRUCache(int capacity) {
-        this.map = new HashMap<>();
-        this.allowedSize = capacity;
+        this.capacity = capacity;
+        this.cache = new HashMap<>();
     }
     
     public int get(int key) {
-        if (map.containsKey(key)) {
-            Entry entry = map.get(key);
-            removePreviousEntry(entry); // remove previous node in DLL, and put it at head. so size of cache is same, with updated DLL.
-            markAsRecentlyUsed(entry);
-            return entry.value;
+        if (!cache.containsKey(key)) {
+            return -1;
         }
-        return -1;
+        ListNode node = cache.get(key);
+        removeAsLeastRecentlyUsed(node);
+        markAsRecentlyUsed(node);
+        return node.number;
     }
     
     public void put(int key, int value) {
-        if (map.containsKey(key)) {
-            Entry entry = map.get(key);
-            entry.value = value;
-            removePreviousEntry(entry);
-            map.put(key, entry);
-            markAsRecentlyUsed(entry);
-        } else {
-            Entry newEntry = new Entry();
-            newEntry.key = key;
-            newEntry.value = value;
-            if (map.size() >= allowedSize) {
-                map.remove(end.key);
-                removePreviousEntry(end);
-                markAsRecentlyUsed(newEntry);
-            } else {
-                markAsRecentlyUsed(newEntry);
+        ListNode node = cache.get(key);
+        if (node == null) {
+            if (cache.size() >= capacity) {
+                removeAsLeastRecentlyUsed(tail);
             }
-            map.put(key, newEntry);
+            node = new ListNode(key, value);
+            markAsRecentlyUsed(node);
+        } else {
+            node.number = value;
+            removeAsLeastRecentlyUsed(node);
+            markAsRecentlyUsed(node);
         }
     }
     
-    
-    private void removePreviousEntry(Entry entry) {
-        if (entry.left != null) {
-            entry.left.right = entry.right;
-        } else {
-            start = entry.right;
+    private void removeAsLeastRecentlyUsed(ListNode node) {
+        if (node == null) {
+            return;
         }
-        
-        if (entry.right != null) {
-            entry.right.left = entry.left;
+        cache.remove(node.key);
+        if (head == node) {
+            head = head.next;
+        } else if (tail == node) {
+            tail = tail.prev;
         } else {
-            end = entry.left;
+            ListNode prev = node.prev;
+            ListNode next = node.next;
+            prev.next = next;
+            next.prev = prev;
         }
     }
     
-    
-    private void markAsRecentlyUsed(Entry entry) {
-        entry.right = start;
-        entry.left = null;
-        
-        if (start != null) {
-            start.left = entry;
+    private void markAsRecentlyUsed(ListNode node) {
+        if (node == null) {
+            return;
         }
-        
-        start = entry;
-        if (end == null) {
-            end = start;
+        cache.put(node.key, node);
+        if (head == null) {
+            head = node;
+            tail = node;
+        } else if (head == node) {
+            return;
+        } else if (tail == node) {
+            tail = tail.prev;
         }
+        node.next = head;
+        head.prev = node;
+        head = node;
+        
     }
 }
 
