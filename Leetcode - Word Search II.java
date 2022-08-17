@@ -1,4 +1,6 @@
 // https://leetcode.com/problems/word-search-ii/
+
+// One optimization we can try is instead of searching the whole trie from topm to bottom, we can send current trieNode as we go deep in recursion. 
 class Trie {
     private class TrieNode {
         char ch;
