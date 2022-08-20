@@ -141,7 +141,7 @@ class Twitter {
                 for (Tweet t : readOnlyTweets) {
                     pq.add(t);
                     if (pq.size() > FEED_LIMIT) {
-                        pq.poll();
+                        pq.poll(); // remove the 11th tweet which was oldest by time. it will be in the root since we are using min-heap. 
                     }
                 }
             }
