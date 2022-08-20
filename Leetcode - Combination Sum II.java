@@ -62,6 +62,8 @@ class Solution {
             if (start > index && candidates[start] == candidates[start - 1]) {
                 continue;//avoid duplicates now itself rather than doing deep recursion and eliminating
             }
+            // Also in the brute force we did ignore an element and move ahead, that is implicitly achieved here since we loop from start..candidate.length
+            // and in each iteration of the loop we already backtracked. So each iteration will also take care of the case where previous element was skipped.
             int newTarget = target - candidates[start];
             if (newTarget < 0) {// since candidates are sorted
                 break;
