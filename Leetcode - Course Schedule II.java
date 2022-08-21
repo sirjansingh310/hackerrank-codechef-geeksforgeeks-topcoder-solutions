@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/course-schedule-ii/ 
-// Topological sort only instead of naive detect a cycle(which i did with both topo sort and dfs cycle detection)
+// Topological sort only instead of solution for Course Schedule.java (which i did with both topo sort and dfs cycle detection)
 // Since we want to return order of courses taken if possible, and topological sort gives exactly that.
 
 class Solution {
