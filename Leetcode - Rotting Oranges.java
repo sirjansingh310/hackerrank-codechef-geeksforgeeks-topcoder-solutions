@@ -70,7 +70,8 @@ class Solution {
 
 // Multi source bfs. Here we put all start points in queue. Now for the currnt queue size, we visit all nodes. It is exactly like level order traversal
 // Notice the immediate advantage of this, we can actually make grid[i][j] = 2 as we are not worried that someother source can make it rotten in less time.
-// all sources fired from once. And for the current level(queue size), we update its children in like realtime, parallely. And we know all this is still one unit of time
+// all sources fired from once. And for the current level(queue size), we update its children in like realtime, parallely. And we know all this is still one unit of time.
+// because of this, we need not store mininmumRotTime like we did in previous solution. It is like all real-time updates made on orange.
 // This is simply amazing solution
 class Solution {
     public int orangesRotting(int[][] grid) {
