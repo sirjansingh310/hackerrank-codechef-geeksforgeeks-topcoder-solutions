@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/where-will-the-ball-fall/
+// O(M * N) Solution
 class Solution {
     public int[] findBall(int[][] grid) {
         int n = grid[0].length;
