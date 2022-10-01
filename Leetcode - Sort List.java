@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/sort-list/
 // Merge sort, O(NlogN) time, O(1) space, as no new ListNode is created for the sorted list, all done in place
+// But recursion itself takes space for recursion call stack
 /**
  * Definition for singly-linked list.
  * public class ListNode {
