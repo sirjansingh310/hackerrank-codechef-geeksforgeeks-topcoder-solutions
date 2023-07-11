@@ -9,7 +9,7 @@ public class Solution {
 		}
 		return recur(arr, 1, N - 1, dp);
 	}
-
+	// O(N^3) Time, O(N^2) Space
 	private static int recur(int[] arr, int start, int end, int[][] dp) {
 		if (start == end) {
 			return 0;
