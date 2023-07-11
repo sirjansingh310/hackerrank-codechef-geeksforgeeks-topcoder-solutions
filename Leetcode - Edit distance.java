@@ -8,7 +8,7 @@ class Solution {
             dp[i][0] = i;
         }
 
-        // base case if str 1 is empty, remove all chars from str2
+        // base case if str 1 is empty, insert all chars from str2
         for (int i = 0; i <= word2.length(); i++) {
             dp[0][i] = i;
         }
